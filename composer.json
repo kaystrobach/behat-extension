@@ -1,0 +1,14 @@
+{
+	"name":"kaystrobach/behat-extension",
+	"type":"library",
+	"description":null,
+	"version":null,
+	"require":{
+		"behat/mink-extension":"*",
+	},
+	"autoload":{
+		"psr-0":{
+			"KayStrobach\\BehatExtension":"Classes"
+		}
+	}
+}
