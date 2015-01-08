@@ -4,7 +4,7 @@
 	"description":null,
 	"version":null,
 	"require":{
-		"behat/mink-extension":"*",
+		"behat/mink-extension":"*"
 	},
 	"autoload":{
 		"psr-0":{
