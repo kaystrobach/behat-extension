@@ -16,11 +16,11 @@ class FeatureContext extends \Behat\MinkExtension\Context\MinkContext
      */
     public function __construct()
     {
-        $this->useContext('IMAP', 'KayStrobach\BehatExtension\Contexts\Typo3CMSContext);
-        $this->useContext('IMAP', 'KayStrobach\BehatExtension\Contexts\Typo3FlowContext);
         $this->useContext('IMAP', 'KayStrobach\BehatExtension\Contexts\ImapContext);
         $this->useContext('SSH', 'KayStrobach\BehatExtension\Contexts\ImapContext);
         $this->useContext('FTP', 'KayStrobach\BehatExtension\Contexts\ImapContext);
+        $this->useContext('Typo3CMS', 'KayStrobach\BehatExtension\Contexts\Typo3CMSContext);
+        $this->useContext('Typo3Flow', 'KayStrobach\BehatExtension\Contexts\Typo3FlowContext);
     }
 }
 ```
