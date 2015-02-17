@@ -15,15 +15,29 @@ use KayStrobach\BehatExtension\Context\AbstractFeatureContext;
 
 class FeatureContext extends AbstractFeatureContext{
 	/**
-	 * @Given /^(?:|I )connect to telnet server
+	 *
+	 * @Given /^(?:|I )connect to telnet server "(?P<host>[^"]*)" on port "(?P<port>[^"]*)" with timeout "(?P<timeout>[^"]*)"$/
+	 * @param $host
+	 * @param $port
+	 * @param $timeOut
+	 * @throws BehaviorException
 	 */
-	public function iConnectToImapServerByEnv() {
-		$host = $this->getParameter('telnetHost');
-		$port = $this->getParameter('telnetPort');
-		$timeOut = $this->getParameter('telnetTimeout');
+	public function iConnectToServer($host, $port, $timeOut) {
 		$connection = fsockopen($host, $port, $errno, $errstr, $timeOut);
 		if($connection === FALSE) {
 			throw new BehaviorException('Failed to connect to ' . $host);
 		}
+	}
+
+
+	/**
+	 * @Given /^(?:|I )connect to telnet server
+	 */
+	public function iConnectToServerByEnv() {
+		$this->iConnectToServer(
+			$this->getParameter('telnetHost'),
+			$this->getParameter('telnetPort'),
+			$this->getParameter('telnetTimeout')
+		);
 	}
 }

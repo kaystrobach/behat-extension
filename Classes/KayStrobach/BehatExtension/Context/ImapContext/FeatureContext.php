@@ -39,7 +39,7 @@ class FeatureContext extends AbstractFeatureContext{
 	 *
 	 * @Given /^(?:|I )connect to imap server "(?P<mailbox>[^"]*)" as "(?P<username>[^"]*)" with password "(?P<password>[^"]*)"$/
 	 */
-	public function iConnectToImapServer($mailbox, $username, $password, $options = 0, $n_retries = 0, $params = array()) {
+	public function iConnectToServer($mailbox, $username, $password, $options = 0, $n_retries = 0, $params = array()) {
 		$this->imapDsn = $mailbox;
 		$this->imapConnection = \imap_open ($mailbox , $username , $password, $options, $n_retries, $params);
 		if($this->imapConnection === FALSE) {
@@ -50,8 +50,13 @@ class FeatureContext extends AbstractFeatureContext{
 	/**
 	 * @Given /^(?:|I )connect to imap server
 	 */
-	public function iConnectToImapServerByEnv() {
-		// @todo add env stuff
+	public function iConnectToServerByEnv() {
+		$this->iConnectToServer(
+			$this->getParameter('imapMailbox'),
+			$this->getParameter('imapUsername'),
+			$this->getParameter('imapPassword'),
+			$this->getParameter('imapOptions')
+		);
 	}
 
 	/**
