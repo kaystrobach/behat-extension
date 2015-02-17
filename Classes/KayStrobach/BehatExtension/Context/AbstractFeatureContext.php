@@ -28,12 +28,15 @@ class AbstractFeatureContext extends BehatContext{
 
 	/**
 	 * @param $key
+	 * @param string $default
 	 * @return string
 	 * @throws BehaviorException
 	 */
-	public function getParameter($key) {
+	public function getParameter($key, $default = NULL) {
 		if(array_key_exists($key, $this->parameters)) {
 			return $this->parameters[$key];
+		} elseif($default !== NULL) {
+			return $default;
 		} else {
 			throw new BehaviorException('Can´t find parameter ' . $key . ', please add it to default.context.parameters or similar.');
 		}
