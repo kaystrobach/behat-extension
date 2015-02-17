@@ -48,6 +48,13 @@ class FeatureContext extends AbstractFeatureContext{
 	}
 
 	/**
+	 * @Given /^(?:|I )connect to imap server
+	 */
+	public function iConnectToImapServerByEnv() {
+		// @todo add env stuff
+	}
+
+	/**
 	 * @Then /^(?:|I )can list mailboxes$/
 	 *
 	 * @return string
