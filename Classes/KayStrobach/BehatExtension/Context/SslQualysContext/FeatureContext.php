@@ -1,6 +1,6 @@
 <?php
 
-namespace KayStrobach\BehatExtension\Context\SslContext;
+namespace KayStrobach\BehatExtension\Context\SslQualysContext;
 use Behat\Mink\Exception\ExpectationException;
 use KayStrobach\BehatExtension\Context\AbstractFeatureContext;
 
@@ -68,7 +68,7 @@ class FeatureContext extends AbstractFeatureContext{
 	/**
 	 * Checks, that checkbox with specified in|name|label|value is checked.
 	 *
-	 * @Then /^the SSL check should be atleast "([^"]*)"$/
+	 * @Then /^the Qualys SSL check should be atleast "([^"]*)"$/
 	 */
 	public function theSslCheckShouldBeAtleast($state) {
 		$stateAsInteger = $this->mapStateToInteger($state);
