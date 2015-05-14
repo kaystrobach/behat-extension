@@ -1,12 +1,6 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: kay
- * Date: 08.01.15
- * Time: 17:36
- */
 
-namespace KayStrobach\BehatExtension\Context\ImapContext;
+namespace KayStrobach\BehatExtension\Context\TelnetContext;
 
 
 use Behat\Behat\Exception\BehaviorException;

@@ -22,7 +22,7 @@ class AbstractFeatureContext extends BehatContext{
 	/**
 	 * @param array $parameters
 	 */
-	public function __construct(array $parameters) {
+	public function __construct(array $parameters = array()) {
 		$this->params = $parameters;
 	}
 

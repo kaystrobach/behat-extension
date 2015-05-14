@@ -13,6 +13,7 @@ class LoaderUtility {
 			if(is_file($workingDir . '/' . $context . '/FeatureContext.php')) {
 				$className = '\\KayStrobach\\BehatExtension\\Context\\' . $context . '\\FeatureContext';
 				$parent->useContext($context, new $className);
+				echo 'Adding ' . $className . ' as context' . chr(10);
 			}
 		}
 	}
