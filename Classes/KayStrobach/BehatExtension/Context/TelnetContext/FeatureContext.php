@@ -25,7 +25,7 @@ class FeatureContext extends AbstractFeatureContext{
 
 
 	/**
-	 * @Given /^(?:|I )connect to telnet server
+	 * @Given /^(?:|I )connect to telnet server$/
 	 */
 	public function iConnectToServerByEnv() {
 		$this->iConnectToServer(

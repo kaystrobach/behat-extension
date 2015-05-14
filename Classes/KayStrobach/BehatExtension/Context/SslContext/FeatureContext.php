@@ -40,12 +40,14 @@ class FeatureContext extends AbstractFeatureContext{
 	 */
 	protected function getCurrentSslVoting($url) {
 		$buffer = file_get_contents('https://www.ssllabs.com/ssltest/analyze.html?d=' . urlencode($this->getCurrentLocation()));
+		libxml_use_internal_errors(true);
 		$domDocument = new \DOMDocument();
 		$domDocument->loadHTML($buffer);
 		$ratingElement = $domDocument->getElementById('rating');
 		if($ratingElement === NULL) {
 			throw new \Exception('No voting available yet');
 		}
+		libxml_use_internal_errors(false);
 		return trim($ratingElement->childNodes->item(3)->textContent);
 	}
 

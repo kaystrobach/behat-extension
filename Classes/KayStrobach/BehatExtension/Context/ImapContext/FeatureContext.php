@@ -10,7 +10,6 @@ namespace KayStrobach\BehatExtension\Context\ImapContext;
 
 
 use Behat\Behat\Exception\BehaviorException;
-use Behat\Behat\Exception\Exception;
 use KayStrobach\BehatExtension\Context\AbstractFeatureContext;
 
 class FeatureContext extends AbstractFeatureContext{
@@ -48,7 +47,7 @@ class FeatureContext extends AbstractFeatureContext{
 	}
 
 	/**
-	 * @Given /^(?:|I )connect to imap server
+	 * @Given /^(?:|I )connect to imap server$/
 	 */
 	public function iConnectToServerByEnv() {
 		$this->iConnectToServer(
