@@ -108,14 +108,19 @@ class FeatureContext extends AbstractFeatureContext{
 		} catch (\Exception $e) {
 			$this->printDebug('Connection to ssllabs.com for initializing the check, may take several minutes ...');
 			$time = time();
-			while(time() - $time <= 300) {
-				echo '|';
-				usleep(500);
-				echo "\r";
-				echo '-';
-				usleep(500);
-				echo "\r";
+			if(getenv('BUILD_NUMBER') !== false) {
+				while(time() - $time <= 300) {
+					echo '|';
+					usleep(500);
+					echo "\r";
+					echo '-';
+					usleep(500);
+					echo "\r";
+				}
+			} else {
+				sleep(300);
 			}
+
 			$voting = $this->getCurrentSslVoting($uri);
 		}
 		$votingAsInteger = $this->mapStateToInteger($voting);
