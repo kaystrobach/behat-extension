@@ -56,7 +56,10 @@ class FeatureContext extends AbstractFeatureContext{
 				switch (trim($warningBox->textContent)) {
 					case 'Assessment failed: Unable to connect to server':
 						throw new NoSslException(trim($warningBox->textContent), $this->getSession());
-					break;
+						break;
+					default:
+						throw new \Exception(trim($warningBox->textContent));
+						break;
 				}
 			}
 			throw new \Exception('No voting available yet');
@@ -101,16 +104,21 @@ class FeatureContext extends AbstractFeatureContext{
 	 */
 	public function theSslForUriCheckShouldBeAtleast($state, $uri) {
 		$stateAsInteger = $this->mapStateToInteger($state);
-		try {
-			$voting = $this->getCurrentSslVoting($uri);
-		} catch(NoSslException $e) {
-			throw $e;
-		} catch (\Exception $e) {
-			$this->printDebug('Connection to ssllabs.com for initializing the check, may take several minutes ...');
-			sleep(300);
+		echo chr(10);
+		$this->prettyPrintDebug('Starting SSL check for ' . $uri);
 
-			$voting = $this->getCurrentSslVoting($uri);
+		for($i = 0; $i < 20; $i++) {
+			try {
+				$voting = $this->getCurrentSslVoting($uri);
+				continue;
+			} catch(NoSslException $e) {
+				throw $e;
+			} catch (\Exception $e) {
+				$this->prettyPrintDebug('ssllabs.com: ' . $e->getMessage());
+				sleep(30);
+			}
 		}
+
 		$votingAsInteger = $this->mapStateToInteger($voting);
 		if(($stateAsInteger > $votingAsInteger)) {
 			throw new ExpectationException('SSL State ' . $voting. ' is lower than allowed', $this->getSession());

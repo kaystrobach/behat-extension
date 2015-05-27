@@ -51,4 +51,8 @@ class AbstractFeatureContext extends BehatContext{
 			$this->output = '';
 		}
 	}
+
+	public function prettyPrintDebug($string) {
+		echo "\033[33m     | " . strtr($string, array("\n" => "\n     | ")) . "\033[0m\n";
+	}
 }
