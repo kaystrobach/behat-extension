@@ -63,7 +63,7 @@ class FeatureContext extends AbstractFeatureContext{
 						throw new NoSslException(trim($warningBox->textContent), $this->getSession());
 						break;
 					default:
-						throw new StillRunningException(trim($warningBox->textContent));
+						throw new StillRunningException(trim($warningBox->textContent), $this->getSession());
 						break;
 				}
 			}
