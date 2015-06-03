@@ -59,6 +59,7 @@ class FeatureContext extends AbstractFeatureContext{
 			$warningBox = $domDocument->getElementById('warningBox');
 			if($warningBox !== null) {
 				switch (trim($warningBox->textContent)) {
+					case 'Assessment failed: No secure protocols supported':
 					case 'Assessment failed: Unable to connect to server':
 						throw new NoSslException(trim($warningBox->textContent), $this->getSession());
 						break;
