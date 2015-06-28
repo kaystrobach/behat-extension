@@ -10,12 +10,20 @@ use KayStrobach\BehatExtension\Context\SslQualysContext\Exceptions\StillRunningE
 class FeatureContext extends AbstractFeatureContext{
 	protected $sslStates = [
 		'A+' => 100,
-		'A' => 90,
-		'A-' => 85,
+		'A' => 95,
+		'A-' => 90,
+		'B+' => 85
 		'B' => 80,
-		'C' => 60,
+		'B-' => 75
+		'C+' => 60,
+		'C' => 55,
+		'C-' => 50,
+		'D+' => 45,
 		'D' => 40,
-		'E' => 30,
+		'D-' => 35,
+		'E+' => 30,
+		'E' => 25,
+		'E-' => 20,
 		'T' => 0,
 	];
 
