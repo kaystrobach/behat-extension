@@ -11,6 +11,7 @@ class FeatureContext extends AbstractFeatureContext{
 	protected $sslStates = [
 		'A+' => 100,
 		'A' => 90,
+		'A-' => 85,
 		'B' => 80,
 		'C' => 60,
 		'D' => 40,
