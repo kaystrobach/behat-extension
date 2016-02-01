@@ -12,9 +12,9 @@ class FeatureContext extends AbstractFeatureContext{
 		'A+' => 100,
 		'A' => 95,
 		'A-' => 90,
-		'B+' => 85
+		'B+' => 85,
 		'B' => 80,
-		'B-' => 75
+		'B-' => 75,
 		'C+' => 60,
 		'C' => 55,
 		'C-' => 50,
