@@ -57,10 +57,10 @@ class FeatureContext extends AbstractFeatureContext
      */
     protected function getCurrentSslVoting($uri, $ip = NULL)
     {
-        $pathSegments = parse_url($uri);
+        $pathSegments = parse_url(trim($uri));
         if ($ip === NULL) {
             if (!array_key_exists('host', $pathSegments)) {
-                throw new \Exception('The Uri' . $uri . ' can´ be parsed cleanly');
+                throw new \Exception('The Uri ' . $uri . ' can´t be parsed cleanly - ' . print_r($pathSegments, true));
             }
             $ip = gethostbyname($pathSegments['host']);
         }
